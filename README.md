@@ -9,7 +9,7 @@ This is inspired by https://github.com/nabeken/docker-volume-container-rsync and
 
 Launch the container via docker:
 ```
-docker run -d -p <port>:873 --name rsyncd thomfab/rsyncd
+docker run -d -p <port>:873 --name rsyncd thomfab/docker-rsyncd
 ```
 
 You can connect to the rsync server you just created with:
@@ -36,7 +36,7 @@ Example :
 ```
 docker run -d -p <port>:873 --name rsyncd \
               -e VOLUME="backup" \
-              thomfab/rsyncd
+              thomfab/docker-rsyncd
 ```
 which will give :
 ```
@@ -52,7 +52,7 @@ You can override via an environment variable like this:
 docker run -d -p <port>:873 \
               --name rsyncd \
               -e ALLOW='10.0.0.0/8 x.x.x.x/y' \
-              thomfab/rsyncd
+              thomfab/docker-rsyncd
 ```
 
 ### OWNER
@@ -62,7 +62,7 @@ Example, if your docker host has a user "ubuntu" with id 1000 you can use :
 docker run -d -p <port>:873 \
            --name rsyncd \
            -e OWNER=1000 \
-           thomfab/rsyncd
+           thomfab/docker-rsyncd
 ```
 Files created in the volume by rsyncd will belong to the user ubuntu (see volumes below).
 
@@ -73,7 +73,7 @@ Example, if your docker host has a group "users" with id 100 you can use :
 docker run -d -p <port>:873 \
            --name rsyncd \
            -e GROUP=100 \
-           thomfab/rsyncd
+           thomfab/docker-rsyncd
 ```
 Files created in the volume by rsyncd will belong to the group users.
 
@@ -84,7 +84,7 @@ Example, if your docker host has a user "ubuntu" with id 1000 you can use :
 docker run -d -p <port>:873 \
               --name rsyncd \
               -v /path/to/host/folder:/volume \
-              thomfab/rsyncd
+              thomfab/docker-rsyncd
 ```
 
 ### Full example
@@ -95,6 +95,6 @@ docker run -d -p 873:873 \
               -e OWNER=1000 \
               -e GROUP=100 \
               -v /srv/backup:/volume \
-              thomfab/rsyncd
+              thomfab/docker-rsyncd
 ```
 This will start an rsync daemon, exposed on the standard port, with a volume named "backup", and map it to the host folder /srv/backup. Files created during sync will belong to user "ubuntu" and group "users" on a standard Ubuntu install.
