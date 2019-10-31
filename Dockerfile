@@ -1,4 +1,4 @@
-FROM ubuntu:utopic
+FROM ubuntu:disco
 MAINTAINER thomfab
 
 RUN apt-get update && \
@@ -9,6 +9,6 @@ RUN apt-get update && \
 
 EXPOSE 873
 VOLUME /volume
-ADD ./run.sh /usr/local/bin/run.sh
+COPY ./run.sh /usr/local/bin/run.sh
 RUN chmod +x /usr/local/bin/run.sh
 ENTRYPOINT ["/usr/local/bin/run.sh"]
