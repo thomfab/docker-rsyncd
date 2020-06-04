@@ -25,7 +25,7 @@ log file = /dev/stdout
     hosts deny = *
     hosts allow = ${ALLOW}
     read only = false
-    path = /volume
+    path = /${VOLUME}
     comment = ${VOLUME}
 EOF
 
